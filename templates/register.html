@@ -1,0 +1,41 @@
+<!-- templates/register.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Register</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <h2>📅 Register</h2>
+  <form id="registerForm">
+    <input type="text" id="registerUsername" placeholder="Username" required />
+    <input type="password" id="registerPassword" placeholder="Password" required />
+    <button type="submit">Register</button>
+  </form>
+  <p id="registerStatus"></p>
+  <p>Already have an account? <a href="/login">Back to login</a></p>
+
+  <script>
+    const registerForm = document.getElementById("registerForm");
+    registerForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const username = document.getElementById("registerUsername").value;
+      const password = document.getElementById("registerPassword").value;
+
+      const res = await fetch("/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+
+      const data = await res.json();
+
+      if (res.status === 200 || res.status === 201) {
+        window.location.href = "/login?registered=true";
+      } else {
+        document.getElementById("registerStatus").innerText = data.msg || "Registration failed.";
+      }
+    });
+  </script>
+</body>
+</html>
