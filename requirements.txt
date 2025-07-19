@@ -1,0 +1,10 @@
+Flask
+flask_sqlalchemy
+flask_jwt_extended
+flask_cors
+psycopg2-binary
+scikit-learn
+joblib
+pandas
+gunicorn
+flasgger

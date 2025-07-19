@@ -1,0 +1,5 @@
+# Ignore trained model and logs
+model/
+logs/
+*.pkl
+*.log
