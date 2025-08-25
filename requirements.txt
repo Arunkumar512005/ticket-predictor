@@ -3,9 +3,10 @@ flask_sqlalchemy
 flask_jwt_extended
 flask_cors
 psycopg2-binary
-scikit-learn
+scikit-learn==1.6.1
 joblib
 pandas
 gunicorn
 flasgger
 python-dotenv
+
